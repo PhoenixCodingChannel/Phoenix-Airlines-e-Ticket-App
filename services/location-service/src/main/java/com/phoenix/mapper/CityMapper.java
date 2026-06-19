@@ -33,19 +33,19 @@ public class CityMapper {
     }
 
     public static City updateEntity(City city, CityRequest request){
-        if(request.getName() == null) {
+        if(request.getName() != null) {
             city.setName(request.getName().trim());
         }
-        if(request.getCityCode() == null) {
+        if(request.getCityCode() != null) {
             city.setCityCode(request.getCityCode().trim().toUpperCase());
         }
-        if(request.getCountryCode() == null) {
+        if(request.getCountryCode() != null) {
             city.setCountryCode(request.getCountryCode().trim().toUpperCase());
         }
-        if(request.getCountryName() == null) {
+        if(request.getCountryName() != null) {
             city.setCountryName(request.getCountryName().trim().toUpperCase());
         }
-        if(request.getRegionCode() == null) {
+        if(request.getRegionCode() != null) {
             city.setRegionCode(request.getRegionCode().trim().toUpperCase());
         }
         return city;
