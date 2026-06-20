@@ -16,8 +16,9 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/cities")
+@RequestMapping("/api/cities")
 public class CityController {
+
     private final CityService cityService;
 
     @PostMapping
@@ -36,10 +37,10 @@ public class CityController {
 
     @GetMapping
     public ResponseEntity<Page<CityResponse>> getAllCities(
-            @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size,
-            @RequestParam(defaultValue = "name") String sortBy,
-            @RequestParam(defaultValue = "asc") String sortDirection
+            @RequestParam(name="page",defaultValue = "0") int page,
+            @RequestParam(name="size",defaultValue = "10") int size,
+            @RequestParam(name="sortBy",defaultValue = "name") String sortBy,
+            @RequestParam(name="sortDirection",defaultValue = "asc") String sortDirection
     ){
         Sort sort = Sort.by(Sort.Direction.fromString(sortDirection), sortBy);
         Pageable pageable = PageRequest.of(page, size, sort);
@@ -65,9 +66,9 @@ public class CityController {
 
     @GetMapping("/search")
     public ResponseEntity<Page<CityResponse>> searchCities(
-            @RequestParam String keyword,
-            @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size
+            @RequestParam(name = "keyword") String keyword,
+            @RequestParam(name="page",defaultValue = "0") int page,
+            @RequestParam(name="size",defaultValue = "10") int size
     ){
         Pageable pageable = PageRequest.of(page, size);
         return ResponseEntity.status(HttpStatus.OK).body(cityService.searchCities(keyword, pageable));
@@ -75,9 +76,9 @@ public class CityController {
 
     @GetMapping("/country/{countryCode}")
     public ResponseEntity<Page<CityResponse>> getCitiesByCountryCode(
-            @PathVariable String countryCode,
-            @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size
+            @PathVariable("countryCode") String countryCode,
+            @RequestParam(name="page",defaultValue = "0") int page,
+            @RequestParam(name="size",defaultValue = "10") int size
     ){
         Pageable pageable = PageRequest.of(page, size);
         return ResponseEntity.status(HttpStatus.OK)

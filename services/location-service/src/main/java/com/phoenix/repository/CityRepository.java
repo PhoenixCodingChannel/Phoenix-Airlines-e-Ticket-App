@@ -13,7 +13,7 @@ public interface CityRepository extends JpaRepository<City, Long> {
 
     boolean existsByCityCodeAndIdNot(String cityCode, Long id);
 
-    Page<City> findCountryCodeIgnoreCase(String countryCode, Pageable pageable);
+    Page<City> findByCountryCodeIgnoreCase(String countryCode, Pageable pageable);
 
     @Query("""
              Select c from City c

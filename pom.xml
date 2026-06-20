@@ -71,7 +71,7 @@
                     <!--this plugin is responsible for creating a runnable spring boot JAR-->
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
-                    <version>@{spring.boot.version}</version>
+                    <version>${spring.boot.version}</version>
                 </plugin>
             </plugins>
         </pluginManagement>

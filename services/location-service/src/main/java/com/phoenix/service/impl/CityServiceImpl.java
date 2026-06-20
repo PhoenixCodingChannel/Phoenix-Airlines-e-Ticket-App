@@ -68,7 +68,7 @@ public class CityServiceImpl implements CityService {
 
     @Override
     public Page<CityResponse> getAllCitiesByCountryCode(String countryCode, Pageable pageable) {
-        return cityRepository.findCountryCodeIgnoreCase(countryCode, pageable)
+        return cityRepository.findByCountryCodeIgnoreCase(countryCode, pageable)
                 .map(CityMapper::toResponse);
     }
 

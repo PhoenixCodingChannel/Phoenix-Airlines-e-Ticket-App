@@ -3,7 +3,7 @@ package com.phoenix.controller;
 import com.phoenix.payload.request.AirportRequest;
 import com.phoenix.payload.response.AirportResponse;
 import com.phoenix.payload.response.ApiResponse;
-import com.phoenix.service.AirpostService;
+import com.phoenix.service.AirportService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -17,14 +17,14 @@ import java.util.List;
 @RequestMapping("/api/airports")
 public class AirportController {
 
-    private final AirpostService airpostService;
+    private final AirportService airportService;
 
     @PostMapping
     public ResponseEntity<AirportResponse> createAirport(
             @Valid @RequestBody AirportRequest airportRequest
     ) throws Exception {
         return ResponseEntity.status(HttpStatus.CREATED).body(
-                airpostService.createAirport(airportRequest)
+                airportService.createAirport(airportRequest)
         );
     }
 
@@ -33,14 +33,14 @@ public class AirportController {
             (@PathVariable Long id) throws Exception {
 
         return ResponseEntity.status(HttpStatus.OK).body(
-                airpostService.getAirportById(id)
+                airportService.getAirportById(id)
         );
     }
 
     @GetMapping
     public ResponseEntity<List<AirportResponse>> getAllAirports(){
         return ResponseEntity.status(HttpStatus.OK).body(
-                airpostService.getAllAirports()
+                airportService.getAllAirports()
         );
     }
 
@@ -49,7 +49,7 @@ public class AirportController {
             (@PathVariable Long cityId) throws Exception {
 
         return ResponseEntity.status(HttpStatus.OK).body(
-                airpostService.getAirportByCityId(cityId)
+                airportService.getAirportByCityId(cityId)
         );
     }
 
@@ -59,13 +59,13 @@ public class AirportController {
             @Valid @RequestBody AirportRequest airportRequest) throws Exception {
 
         return ResponseEntity.status(HttpStatus.OK).body(
-                airpostService.updateAirport(id, airportRequest)
+                airportService.updateAirport(id, airportRequest)
         );
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<ApiResponse> deleteAirport(@PathVariable Long id) throws Exception {
-        airpostService.deleteAirport(id);
+        airportService.deleteAirport(id);
         return ResponseEntity.ok(new ApiResponse("Airport deleted successfully"));
     }
 }

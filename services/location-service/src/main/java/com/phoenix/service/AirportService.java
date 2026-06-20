@@ -5,7 +5,7 @@ import com.phoenix.payload.response.AirportResponse;
 
 import java.util.List;
 
-public interface AirpostService {
+public interface AirportService {
 
     AirportResponse createAirport(AirportRequest request) throws Exception;
     AirportResponse getAirportById(Long id) throws Exception;

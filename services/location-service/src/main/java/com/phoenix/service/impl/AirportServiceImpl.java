@@ -7,7 +7,7 @@ import com.phoenix.payload.request.AirportRequest;
 import com.phoenix.payload.response.AirportResponse;
 import com.phoenix.repository.AirportRepository;
 import com.phoenix.repository.CityRepository;
-import com.phoenix.service.AirpostService;
+import com.phoenix.service.AirportService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,10 +16,10 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class AirportServiceImpl implements AirpostService {
+public class AirportServiceImpl implements AirportService {
 
-    private AirportRepository airportRepository;
-    private CityRepository cityRepository;
+    private final AirportRepository airportRepository;
+    private final CityRepository cityRepository;
 
     @Override
     public AirportResponse createAirport(AirportRequest request) throws Exception {
