@@ -25,7 +25,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <!-- Framework versions - single source of truth-->
+        <!-- Framework versions - a single source of truth-->
         <spring.boot.version>4.1.0</spring.boot.version>
         <spring.cloud.version>2025.1.0</spring.cloud.version>
     </properties>
@@ -59,7 +59,7 @@
             <plugins>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-complier-plugin</artifactId>
+                    <artifactId>maven-compiler-plugin</artifactId>
                     <version>3.13.0</version>
                     <configuration>
                         <source>${java.version}</source>
